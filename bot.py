@@ -36,18 +36,11 @@ def start(update, context):
 def help(update, context):
     reload(config)
     context.bot.sendMessage(chat_id=update.message.chat_id, text='''список доступных команд:
-    /id - id пользователя
     /ifconfig - информация о конфигурации сети
     /vnstat - Статистика использвоания трафика
-    /wgshow - Пользователи VPN
-    /addwguser - Добавить пользователя VPN
     /reboot - Перезагрузить сервер
     ''')
 
-#функция команады id
-def myid(update, context):
-    userid = update.message.from_user.id
-    context.bot.sendMessage(chat_id=update.message.chat_id, text= 'Твой ID:' userid)
 
 #функция команады ifconf
 def ifconfig(update, context):
@@ -62,9 +55,6 @@ dispatcher.add_handler(start_handler)
 
 ifconfig_handler = CommandHandler('ifconfig', ifconfig)
 dispatcher.add_handler(ifconfig_handler)
-
-myid_handler = CommandHandler('id', myid)
-dispatcher.add_handler(myid_handler)
 
 help_handler = CommandHandler('help', help)
 dispatcher.add_handler(help_handler)
